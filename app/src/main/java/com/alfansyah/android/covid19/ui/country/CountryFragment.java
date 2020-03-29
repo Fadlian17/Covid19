@@ -50,7 +50,7 @@ public class CountryFragment extends Fragment {
     }
 
     private void showRecyclerView(){
-        CovidCountryAdapter covidCountryAdapter = new CovidCountryAdapter(covidCountries);
+        CovidCountryAdapter covidCountryAdapter = new CovidCountryAdapter(covidCountries,getActivity());
         rvCovidCountry.setAdapter(covidCountryAdapter);
     }
 
@@ -70,7 +70,20 @@ public class CountryFragment extends Fragment {
                         JSONArray jsonArray = new JSONArray(response);
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject data = jsonArray.getJSONObject(i);
-                            covidCountries.add(new CovidCountry(data.getString("country"), data.getString("cases")));
+
+                            //extract JSON Object  inside JSON Object
+                            JSONObject countryInfo = data.getJSONObject("countryInfo");
+
+                        covidCountries.add(new CovidCountry(
+                                    data.getString("country"),
+                                    data.getString("cases"),
+                                    data.getString("todayCases"),
+                                    data.getString("deaths"),
+                                    data.getString("todayDeaths"),
+                                    data.getString("recovered"),
+                                    data.getString("active"),
+                                    countryInfo.getString("flag")
+                                    ));
                         }
                         showRecyclerView();
                     } catch (JSONException e) {

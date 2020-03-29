@@ -5,21 +5,30 @@
     android:paddingRight="16dp"
     android:paddingLeft="16dp"
     android:paddingTop="8dp"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
+        <ImageView
+            android:id="@+id/imgCountryFlag"
+            android:layout_gravity="center_vertical"
+            android:layout_width="48dp"
+            android:layout_height="40dp"
+            tools:src="@drawable/us"/>
+
         <TextView
-        android:id="@+id/tvTotalCases"
-        style="@style/LabelFontStyle"
-        android:textColor="@color/colorTotalConfirmed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="8000"
-        android:textSize="20sp"/>
+            android:id="@+id/tvTotalCases"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="8000"
+            android:textSize="20sp"
+            style="@style/LabelFontStyle"
+            android:textColor="@color/colorTotalConfirmed"
+            android:layout_marginLeft="10dp"/>
 
         <TextView
             android:id="@+id/tvCountryName"
@@ -27,7 +36,7 @@
             android:textColor="#fff"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="8dp"
             tools:text="China"
             android:textSize="20sp"/>
     </LinearLayout>
